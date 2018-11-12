@@ -1,12 +1,2 @@
-bel7aG
-Belhassen Gharsallahbel7aG
-Belhassen Gharsallahbel7aG
-Belhassen Gharsallah
-bel7aG
-Belhassen Gharsallah
-bel7aG
-Belhassen Gharsallah
-bel7aG
-Belhassen Gharsallah
-bel7aG
-Belhassen Gharsallah
+bel7aG	sum: 3
+bel7aG	sum: integer required for the first and the second argument
