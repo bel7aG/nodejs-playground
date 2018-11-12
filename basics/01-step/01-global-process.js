@@ -3,3 +3,6 @@ console.log(global);
 
 console.log(process);
 //  the process is like document object in the browser.
+
+
+process.exit(0);
