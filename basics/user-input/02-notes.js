@@ -1,5 +1,25 @@
+const fs = require(`fs`);
 const addNote = (title, body) => {
-  console.log('\n\n\nAdding note:\n\t', title, "\n\n\t", body)
+  let notes = [];
+  let note = {
+    title,
+    body
+  };
+
+  try {
+    let notesString = fs.readFileSync('notes-data.json');
+    notes = JSON.parse(notesString);
+  } catch(error) {
+
+  }
+
+  const exist = notes.find(({title, body}) => title == note.title && body == note.body);
+  if (!exist) {
+    notes.push(note);
+    fs.writeFileSync(`notes-data.json`, JSON.stringify(notes));
+  } else {
+    console.log('allready exist');
+  }
 };
 
 const getAll = () => {

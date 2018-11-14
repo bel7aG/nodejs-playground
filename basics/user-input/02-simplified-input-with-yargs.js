@@ -7,21 +7,10 @@ console.log(argv);
 
 const command = process.argv[2];
 
-//$ node 02-simplified-input-with-yargs.js bel7aG --title "belhassenGharsallah" --body "my body hmmm"
+//$ node 02-simplified-input-with-yargs.js add --title "belhassenGharsallah" --body "my body hmmm"
 
-if (command === "bel7aG") {
+if (command === "add") {
   notes.addNote(argv.title, argv.body);
-  /*
-  $ node 02-simplified-input-with-yargs.js bel7aG --title "belhassenGharsallah" --body "my body hmmm"
-        { _: [ 'bel7aG' ],
-        title: 'belhassenGharsallah',
-        body: 'my body hmmm',
-        '$0': '02-simplified-input-with-yargs.js' }
-
-        Adding note:
-               belhassenGharsallah
-               my body hmmm
-  */
 } else if (command === "add") {
   notes.addNote(argv.title, argv.body);
 } else if (command === "list") {
