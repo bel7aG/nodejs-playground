@@ -6,17 +6,20 @@ const argv = yargs.argv;
 console.log(argv);
 
 const command = process.argv[2];
-
 //$ node 02-simplified-input-with-yargs.js add --title "belhassenGharsallah" --body "my body hmmm"
 
-if (command === "add") {
-  let note = notes.addNote(argv.title, argv.body);
-  note = note ? `Note created\n\ttitle: ${argv.title}\n\tbody: ${argv.body}` : "Allready Exist";
-  console.log(note)
-} else if (command === "list") {
-  notes.getNote(argv.title);
-} else if (command === "remove") {
-  notes.removeNote(argv.title);
-}
+switch (command) {
+  case 'add':
+    let note = notes.addNote(argv.title, argv.body);
+    note = note ? `Note created\n\ttitle: ${argv.title}\n\tbody: ${argv.body}` : "Allready Exist";
+    console.log(note);
+    break;
 
-console.log("argv._[0] =", argv._[0]);
+  case 'list':
+    notes.getNote(argv.title);
+    break;
+  case 'remove':
+    const removeNote = notes.removeNote(argv.title);
+    const isRemoved = removeNote ? `${argv.title} removed` : "Not Exist";
+    console.log(isRemoved);
+  }

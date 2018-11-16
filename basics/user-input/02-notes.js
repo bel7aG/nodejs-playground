@@ -20,24 +20,35 @@ const addNote = (title, body) => {
     body
   };
 
-  const exist = notes.find(({title, body}) => title == note.title && body == note.body);
+  const exist = notes.find(({title}) => title === note.title);
   if (!exist) {
     notes.push(note);
-    fs.writeFileSync(`notes-data.json`, JSON.stringify(notes));
+    saveNotes(notes);
     return note;
   }
 };
 
 const getAll = () => {
-  console.log("Getting all notes");
+  return
 }
 
 const getNote = (note) => {
   console.log(`note: ${note}`);
 }
 
-const removeNote = (note) => {
-  console.log(`${note} removed`);
+// ------------------
+
+const removeNote = (titleSpoted) => {
+  if (fetchNotes()){
+    let notes = fetchNotes();
+    const before = notes.length;
+    notes = notes.filter(({ title }) => title !== titleSpoted);
+    const after = notes.length;
+    const isThere = (before !== after) ? true : false;
+    saveNotes(notes);
+    return isThere;
+  }
+  return false;
 }
 
 module.exports = {
