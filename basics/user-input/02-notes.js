@@ -28,21 +28,24 @@ const addNote = (title, body) => {
   }
 };
 
-const getAll = () => {
-  return
-}
+// ------------------
 
-const getNote = (note) => {
-  console.log(`note: ${note}`);
+const getAll = () => {
 }
 
 // ------------------
 
-const removeNote = (titleSpoted) => {
+const getNote = (spotedTitle) => {
+  return fetchNotes().length ? (fetchNotes().find(({ title }) => title === spotedTitle) ? `get: ${spotedTitle}` : `not Exist`) : `no notes right now`
+}
+
+// ------------------
+
+const removeNote = (spotedTitle) => {
   if (fetchNotes()){
     let notes = fetchNotes();
     const before = notes.length;
-    notes = notes.filter(({ title }) => title !== titleSpoted);
+    notes = notes.filter(({ title }) => title !== spotedTitle);
     const after = notes.length;
     const isThere = (before !== after) ? true : false;
     saveNotes(notes);

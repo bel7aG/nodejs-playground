@@ -1,25 +1,27 @@
-const yargs = require('yargs');
+const yargs = require('yargs')
 
-const notes = require('./02-notes.js');
+const notes = require('./02-notes.js')
 
-const argv = yargs.argv;
-console.log(argv);
+const argv = yargs.argv
+console.log(argv)
 
-const command = process.argv[2];
+const command = process.argv[2]
 //$ node 02-simplified-input-with-yargs.js add --title "belhassenGharsallah" --body "my body hmmm"
 
+let note
 switch (command) {
   case 'add':
-    let note = notes.addNote(argv.title, argv.body);
-    note = note ? `Note created\n\ttitle: ${argv.title}\n\tbody: ${argv.body}` : "Allready Exist";
-    console.log(note);
-    break;
+    note = notes.addNote(argv.title, argv.body)
+    note = note ? `Note created\n\ttitle: ${argv.title}\n\tbody: ${argv.body}` : "Allready Exist"
+    console.log(note)
+    break
 
   case 'list':
-    notes.getNote(argv.title);
-    break;
+    note = notes.getNote(argv.title)
+    console.log(note)
+    break
   case 'remove':
-    const removeNote = notes.removeNote(argv.title);
-    const isRemoved = removeNote ? `${argv.title} removed` : "Not Exist";
-    console.log(isRemoved);
+    note = notes.removeNote(argv.title)
+    const isRemoved = note ? `${argv.title} removed` : "Not Exist"
+    console.log(isRemoved)
   }
