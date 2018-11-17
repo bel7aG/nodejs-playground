@@ -20,6 +20,11 @@ switch (command) {
     note = notes.getNote(argv.title)
     console.log(note)
     break
+
+  case 'list-all':
+    notes.getAll();
+    break
+
   case 'remove':
     note = notes.removeNote(argv.title)
     const isRemoved = note ? `${argv.title} removed` : "Not Exist"

@@ -30,14 +30,18 @@ const addNote = (title, body) => {
 
 // ------------------
 
-const getAll = () => {
-}
+const getAll = () => fetchNotes().forEach(({ title, body }, index) => {
+  console.log(`${index} : title: ${title}\tbody: ${body}`);
+})
 
 // ------------------
 
-const getNote = (spotedTitle) => {
-  return fetchNotes().length ? (fetchNotes().find(({ title }) => title === spotedTitle) ? `get: ${spotedTitle}` : `not Exist`) : `no notes right now`
-}
+const getNote = (spotedTitle) => (
+  fetchNotes().length ? (fetchNotes().find(
+    ({ title }) => title === spotedTitle) ?
+      `get: ${spotedTitle}` : `not Exist`)
+      : `no notes right now`
+);
 
 // ------------------
 
