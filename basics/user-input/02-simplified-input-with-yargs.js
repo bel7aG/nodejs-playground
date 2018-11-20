@@ -22,7 +22,11 @@ switch (command) {
     break
 
   case 'list-all':
-    notes.getAll();
+    let allNotes = notes.getAll()
+    console.log(allNotes)
+    allNotes.length ? allNotes.forEach(({ title, body }) => {
+      console.log(`title: ${title}\nbody: ${body}`)
+    }) : `Empty`
     break
 
   case 'remove':
