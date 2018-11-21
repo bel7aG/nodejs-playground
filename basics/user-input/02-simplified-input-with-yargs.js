@@ -2,25 +2,33 @@ const yargs = require('yargs')
 
 const notes = require('./02-notes.js')
 
+const title = {
+  describe: `Title of note`,
+   /*damand is false by default
+                  Now with demand when you execute:
+                      node file.js add
+                      => Add a new note print out*/
+  demand: true,
+  alias: `t` // now instead of --title i can use -t
+}
+
+const body = {
+  describe: `body argument`,
+  demand: true,
+  alias: `b`
+}
+
 const argv = yargs
   .command(`add`, `Add a new note`, {
-    title: {
-      describe: `Title of note`,
-       /*damand is false by default
-                      Now with demand when you execute:
-                          node file.js add
-                          => Add a new note print out
-                                                          */
-      alias: `t` // now instead of --title i can use -t
-    }
+    title,
+    body
   })
   .command(`remove`, `Remove a note`, {
-    title: {
-      describe: `remove Note`,
-      demand: true
-    }
+    title,
+    body
   })
-
+  .command(`read`, `Read a Note`)
+  .command(`list`, `list all notes`)
   .help() // when i add the --help flag it will
   .argv
 
@@ -39,12 +47,12 @@ switch (command) {
     console.log(note)
     break
 
-  case 'list':
+  case 'read':
     note = notes.getNote(argv.title)
     console.log(note)
     break
 
-  case 'list-all':
+  case 'list':
     let allNotes = notes.getAll()
     console.log(allNotes)
     allNotes.length ? allNotes.forEach(({ title, body }) => {
