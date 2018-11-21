@@ -23,11 +23,13 @@ const addNote = (title, body) => {
   }
 
   const exist = notes.find(({title}) => title === note.title)
-  if (!exist) {
+  if (!exist && (!!title && !!body)) {
     notes.push(note)
     saveNotes(notes)
     return note
   }
+  return title && body ? false : null
+
 }
 
 // ------------------
