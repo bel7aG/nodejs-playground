@@ -26,6 +26,11 @@
       "paths": "",
       "override": ""
     },
-    "commonjs": {}
+    "commonjs": {},
+    "node": {
+      "dontLoad": "",
+      "load": "",
+      "modules": ""
+    }
   }
 }
