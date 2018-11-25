@@ -20,4 +20,5 @@ learnProcess = process.cwd()
 
 console.log(learnProcess)
 
+console.log(process)
 process.exit(0);
