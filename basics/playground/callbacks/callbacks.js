@@ -1,0 +1,3 @@
+let getUser = (id, callback) => {
+  
+}

@@ -28,4 +28,4 @@ console.log(bel7aG)
                         node --inspect-brk file.js
 
           and after that open( chrome://inspect/#devices )in chrome
-                                    */
+                                    */              
