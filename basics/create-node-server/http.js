@@ -22,7 +22,9 @@ const myServer = http.createServer((request, response) => {
     contentsDRY = (`
       <h1>Belhassen Gharsallah</h1>
       <form action="/ohlala" method="POST">
-        <input type="text" name="ohlala" />
+        <input type="text" name="name" />
+        <input type="text" name="surname" />
+        <input type="text" name="email" />
         <button type="submit">Done</button>
       </form>
     `)
@@ -31,7 +33,24 @@ const myServer = http.createServer((request, response) => {
   }
 
   if (url === `/ohlala` && method === `POST`) {
-    fileSystem.writeFileSync(`ohlala.txt`, `What's going on`)
+    const body = []
+
+    request.on(`data`, (chunk) => {
+      body.push(chunk)
+      console.log(body) //Buffer (7aja mchaga3ba) all the input in the first case of body(mchaga3bin)
+    })
+
+    request.on(`end`, () => {
+      //Buffer is a global variable by nodejs
+      const parsedBody = Buffer.concat(body).toString()
+      console.log(parsedBody) // output: the value of the input
+
+      const inputsValue = parsedBody.split(`&`).map((element) =>
+        element.split('=')[1]
+      )
+      fileSystem.writeFileSync(`getValues.txt`, inputsValue[0])
+    })
+
     response.statusCode = 302
     response.setHeader(`Location`, `/`)
     return response.end()

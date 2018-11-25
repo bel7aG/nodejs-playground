@@ -1,0 +1,2 @@
+bel7aG	sum: 3
+bel7aG	sum: integer required for the first and the second argument
